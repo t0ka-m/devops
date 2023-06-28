@@ -1,0 +1,37 @@
+---
+- name: Ubuntu System Setup
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Perform system upgrades
+      apt:
+        upgrade: dist
+
+    - name: Uninstall Firefox
+      apt:
+        name: firefox
+        state: absent
+
+    - name: Install Brave Browser
+      apt:
+        name: brave-browser
+        state: present
+
+    - name: Install Terminator
+      apt:
+        name: terminator
+        state: present
+
+    - name: Set Zsh as the default shell
+      user:
+        name: "{{ ansible_user }}"
+        shell: /usr/bin/zsh
+
+    - name: Install Skype
+      apt:
+        name: skypeforlinux
+        state: present
