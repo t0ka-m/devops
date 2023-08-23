@@ -1,7 +1,7 @@
 ---
 - name: Ubuntu System Setup
   hosts: all
-  become: yes
+  become: no
   tasks:
     - name: Update apt cache
       apt:
